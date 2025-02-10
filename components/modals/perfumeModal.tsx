@@ -10,22 +10,23 @@ interface PerfumeModalProps {
 }
 
 export default function PerfumeModal({ perfumeData }: PerfumeModalProps) {
+  const perfumeUrl = `https://www.google.com/search?q=${perfumeData.link}`
+
   return (
     <Card 
       className="py-4 cursor-pointer hover:scale-105 transition-transform"
-      onPress={() => window.open(perfumeData.link, '_blank', 'noopener,noreferrer')}
+      onPress={() => window.open(perfumeUrl, '_blank', 'noopener,noreferrer')}
     >
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">{perfumeData.name}</p>
-        <small className="text-default-500">{perfumeData.description}</small>
-        <h4 className="font-bold text-large">Buy now</h4>
+        <p className="p-4 text-tiny uppercase font-bold">{perfumeData.name}</p>
+        <small className="p-4 text-default-500">{perfumeData.description}</small>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image
           alt={perfumeData.name}
           className="object-cover rounded-xl"
           src={perfumeData.image}
-          width={270}
+          width={135}
         />
       </CardBody>
     </Card>

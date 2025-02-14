@@ -1,6 +1,6 @@
 import {Card, CardHeader, CardBody, Image} from "@heroui/react";
 
-interface PerfumeModalProps {
+interface PerfumeCardProps {
   perfumeData: {
     name: string;
     description: string;
@@ -9,7 +9,7 @@ interface PerfumeModalProps {
   };
 }
 
-export default function PerfumeModal({ perfumeData }: PerfumeModalProps) {
+export default function PerfumeCard({ perfumeData }: PerfumeCardProps) {
   const perfumeUrl = `https://www.google.com/search?q=${perfumeData.link}`
 
   return (

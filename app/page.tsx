@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Form, Textarea, Button } from "@heroui/react";
 
 import { title, subtitle } from "@/components/primitives";
-import PerfumeModal from "@/components/modals/perfumeModal";
+import PerfumeCard from "@/components/cards/perfumeCard";
 import Skeleton from "@/components/skeleton";
 
 interface PerfumeData {
@@ -30,7 +30,12 @@ export default function Home() {
       return;
     }
 
-    const formattedQuery = `Return a JSON array with perfume details (name, link, description, image) for the given QUERY: '${query}'. Detect the language of QUERY and ensure descriptions match it. Links must be valid. No explanations, only JSON.`;
+    const formattedQuery = `
+      Return a JSON array with perfume details (name, link, description, image) for the given QUERY: '${query}'.
+      Detect the language of QUERY and ensure descriptions match it. The links from the items, must be Google Search links, to allow people go to Google Search and see a safe search.
+      The image must match that of the recommended perfume.
+      No explanations, only JSON. If the query is not related to perfumery, fragrances, answer me: "Your query is not allowed".
+    `;
 
     try {
       const response = await fetch(
@@ -133,7 +138,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <PerfumeModal perfumeData={perfume} />
+                    <PerfumeCard perfumeData={perfume} />
                   </a>
                 </div>
               ))}
